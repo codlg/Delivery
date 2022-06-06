@@ -1,6 +1,6 @@
 package com.delivery.delivery.model;
 
-import com.delivery.delivery.dto.RestaurantDto;
+import com.delivery.delivery.dto.RestaurantRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class Restaurant {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
@@ -20,12 +20,12 @@ public class Restaurant {
     @Column(nullable = false)
     private int minOrderPrice;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private int deliveryFee;
 
-    public Restaurant (RestaurantDto restaurantDto){
-        this.name = restaurantDto.getName();
-        this.minOrderPrice = restaurantDto.getMinOrderPrice();
-        this.deliveryFee = restaurantDto.getDeliveryFee();
+    public Restaurant (RestaurantRequestDto restaurantRequestDto){
+        this.name = restaurantRequestDto.getName();
+        this.minOrderPrice = restaurantRequestDto.getMinOrderPrice();
+        this.deliveryFee = restaurantRequestDto.getDeliveryFee();
     }
 }

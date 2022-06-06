@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @Builder
-public class RestaurantDto {
+public class RestaurantRequestDto {
     String name;
     int minOrderPrice;
     int deliveryFee;

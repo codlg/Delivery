@@ -16,7 +16,7 @@ public class FoodController {
 
     @PostMapping("/restaurant/{restaurantId}/food/register")
     public void registerFoods (@PathVariable Long restaurantId, @RequestBody List<FoodRequestDto> foodRequestDto){
-      foodService.registerFood(restaurantId, foodRequestDto);
+        foodService.registerFoods(restaurantId, foodRequestDto);
     }
 
     @GetMapping("/restaurant/{restaurantId}/foods")

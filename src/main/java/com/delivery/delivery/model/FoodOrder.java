@@ -1,6 +1,5 @@
 package com.delivery.delivery.model;
 
-import com.delivery.delivery.dto.FoodRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,8 +8,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Food {
-
+public class FoodOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
@@ -19,14 +17,14 @@ public class Food {
     private String name;
 
     @Column(nullable = false)
-    private int price;
+    private int quantity;
 
     @Column(nullable = false)
-    private Long restaurantId;
+    private int price;
 
-    public Food(Long restaurantId, FoodRequestDto foodRequestDto) {
-        this.name = foodRequestDto.getName();
-        this.price = foodRequestDto.getPrice();
-        this.restaurantId = restaurantId;
+    public FoodOrder(Food food, int quantity){
+        this.name = food.getName();
+        this.price = food.getPrice();
+        this.quantity = quantity;
     }
 }
