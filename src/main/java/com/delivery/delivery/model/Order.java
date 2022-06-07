@@ -1,5 +1,6 @@
 package com.delivery.delivery.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Getter
-@Entity
+@Entity(name = "Order_tb")
 public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

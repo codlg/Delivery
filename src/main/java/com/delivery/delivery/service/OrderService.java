@@ -42,7 +42,7 @@ public class OrderService {
         List<FoodOrder> foodOrderList = new ArrayList<>();
 
         // 요청에 대한 응답
-        List<FoodOrderDto> foodOrderDtoList = new ArrayList<>();
+        List<FoodOrderDto> foods = new ArrayList<>();
 
         for(FoodOrderRequestDto foodOrderRequestDto : orderRequestDto.getFoods()){
             Food food = foodRepository.findById(foodOrderRequestDto.getId()).orElseThrow(
@@ -65,7 +65,7 @@ public class OrderService {
 
             FoodOrderDto foodOrderDto = new FoodOrderDto(food.getName(), quantity, foodOrder.getPrice());
 
-            foodOrderDtoList.add(foodOrderDto);
+            foods.add(foodOrderDto);
 
         }
 
@@ -77,9 +77,11 @@ public class OrderService {
 
         Order order = new Order(restaurantName, deliveryFee, totalPrice, foodOrderList);
 
-        OrderDto orderDto = new OrderDto(restaurantName, deliveryFee, totalPrice, foodOrderDtoList);
+        OrderDto orderDto = new OrderDto(restaurantName, deliveryFee, totalPrice, foods);
+
 
         ordersRepository.save(order);
+
 
         return orderDto;
 

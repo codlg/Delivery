@@ -1,5 +1,6 @@
 package com.delivery.delivery.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -22,9 +23,10 @@ public class FoodOrder {
     @Column(nullable = false)
     private int price;
 
+    @Builder
     public FoodOrder(Food food, int quantity){
         this.name = food.getName();
-        this.price = food.getPrice();
+        this.price = food.getPrice() * quantity;
         this.quantity = quantity;
     }
 }
